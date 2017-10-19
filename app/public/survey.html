@@ -106,18 +106,21 @@
 
           <a href="/api/friends">API Friend List</a>
             |
-          <a href="/htmlRoutes.js">API Github Repo</a>
+          <a href="https://github.com/Tronnie/FriendFinder">API Github Repo</a>
         </p>
 
       </div>
     </footer>
   </div> <!--container-->
+
+
+<!--original on click-->
   <script type="text/javascript">
     $("#submit").on("click", function(event){
       event.preventDefault();
       var newfriend = {
-        name: $("").val().trim();
-        photo: $("").val().trim();
+        name: $("").val().trim(),
+        photo: $("").val().trim(),
         scores: []
       };
       $.post("/api/friends", newfriend)
@@ -127,7 +130,33 @@
       });
     });
   </script>
+
+  <!--video example -->
+  <script type = "text/javascript">
+    function runFriendArray(){
+      var currentURL = window.location.origin;
+      $.ajax({
+        url: currentURL + "/api/friends",
+        method: "GET"
+        })
+        .done(function(friendData){
+          console.log ("-------------------------");
+          console.log ("URL: " + currentURL + "/api/friends");
+          console.log ("-------------------------");
+          console.log (friendData);
+          console.log ("-------------------------");
+        })
+    }
+
+  </script>
+
 </body>
+
+
+
+
+
+
 
 <footer>
   <div class="row">
