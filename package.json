@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Tronnie/FriendFinder#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "espress": "0.0.0",
+    "expres": "0.0.5",
     "express": "^4.16.2",
     "path": "^0.12.7"
   }

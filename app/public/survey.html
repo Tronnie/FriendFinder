@@ -1,1 +1,213 @@
-...survey.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BB Maker</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div class='container'>
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="jumbotron">
+          <h1>BB Maker&reg;: the Buddy Generator</h1>
+        </div>
+
+        <h2 class="page-header" id="survey">Tell me more about you . . . </h2>
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>About You</strong></h3>
+          </div>
+          <div class="panel-body">
+            <form method="POST" role="form">
+              <div class="form-group">
+                <label for="name">Name (Required)</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+              <div class="form-group">
+                <label for="role">Link to Photo (Required)</label>
+                <input type="text" class="form-control" id="photo">
+              </div>
+            </form>
+            <br>
+          </div> <!--panel body-->
+        </div> <!--panel-->
+
+        <div class="panel">
+
+          <h3> <strong>Question 1</strong>
+          </h3>
+            <h4> You like meeting new people.</h4>
+            <form>
+              <div class="form-group">
+                <select class="form-control" id="q1" style="width:155px;">
+                  <option value>Select One</option>
+                  <option value="1">1 (Strongly Disagree)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Strongly Agree)</option>
+                </select>
+                <br />
+              </div>
+            </form>
+
+            <h3> <strong>Question 2</strong>
+            </h3>
+              <h4> You are a night owl.</h4>
+              <form>
+                <div class="form-group">
+                  <select class="form-control" id="q2" style="width:155px;">
+                    <option value>Select One</option>
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                  </select>
+                  <br />
+                </div>
+              </form>
+
+              <h3> <strong>Question 3</strong>
+              </h3>
+                <h4> Three is your favorite number.</h4>
+                <form>
+                  <div class="form-group">
+                    <select class="form-control" id="q3" style="width:155px;">
+                      <option value>Select One</option>
+                      <option value="1">1 (Strongly Disagree)</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                    <br />
+                  </div>
+                </form>
+
+              <button type="Submit" class="btn btn-primary btn-md" id="submit"><span class="glyphicon glyphicon-download"></span> SUBMIT</button>
+
+          </div> <!--panel-->
+      </div> <!--col-lg-12-->
+    </div> <!--"row" -->
+
+    <footer>
+      <div class='container'>
+        <p>
+
+          <a href="/api/friends">API Friend List</a>
+            |
+          <a href="/htmlRoutes.js">API Github Repo</a>
+        </p>
+
+      </div>
+    </footer>
+  </div> <!--container-->
+  <script type="text/javascript">
+    $("#submit").on("click", function(event){
+      event.preventDefault();
+      var newfriend = {
+        name: $("").val().trim();
+        photo: $("").val().trim();
+        scores: []
+      };
+      $.post("/api/friends", newfriend)
+      .done(function(data){
+        console.log(data);
+        alert("finding a match...")
+      });
+    });
+  </script>
+</body>
+
+<footer>
+  <div class="row">
+    <div class ="col-lg-12">
+      <div class="panel panel">
+        <div class="panel-heading">
+          <p class ="panel-title current" style="text-align:center">&copy;2017 Gail Izaguirre</p>
+        </div> <!--close panel-heading-->
+      </div> <!--close class panel-primary-->
+    </div>  <!--close col-lg-12-->
+  </div> <!--close row-->
+</footer>
+
+
+
+<!--Modal sample#1
+<div class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal Text goes here! (name:)(photo:)</p>
+                -OR-
+                <h2 id="matchName">****</h2>
+                <img id="matchImg" src="https://******" />
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+<!--
+<script type ="text/javascript">
+$("#submit").on("click", function(){
+  function validateForm(){
+    var isValid = true;
+    $('.form-control').each(function(){
+      if ( $(this).val()=== '' )
+      isValid = false;
+    });
+
+    $('.chosen-select').each(function(){
+      if( $(this).val()=== '')
+          isValid = false
+    })
+    return isValid;
+  }
+  if (validateForm()==true)
+  {
+    var userData ={
+      name: $("#name").val(),
+      photo: $("#photo").val(),
+      scores: [$("#q1").val(),
+              $("#q2").val(),
+              $("#q3").val(),]
+    }
+    var currentURL = window.location.origin;
+    $.post(currentURL + "/api/friends", userData, function(data){
+      $("#matchName").text(data.name);
+      $('#matchImg').attr("src", data.photo);
+
+      $("#resultsModal").modal('toggle');
+    });
+  }
+  else
+  {
+    alert("Must fill out all the questions");
+  }
+  return false;
+});
+</script>
+-->

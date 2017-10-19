@@ -1,1 +1,60 @@
-home.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BB Maker</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>BB Maker&reg;: the Buddy Generator</h1>
+
+      <h3>Making buddies and -better yet- making BEST buddies has never been easier!</h3>
+      <h4> Answer a few simple questions and let BB Maker&trade; match you with a new friend.</h4>
+      <hr>
+      <a href="/survey.html"><button type="button" class="btn btn-primary btn-lg" id="go"><span class="glyphicon glyphicon-list"></span>  Check out Survey</button></a>
+
+    </div>
+
+<footer>
+  <div class='container'>
+    <p>
+
+      <a href="/api/friends">API Friend List</a>
+        |
+      <a href="/htmlRoutes.js">API Github Repo</a>
+    </p>
+
+  </div>
+</footer>
+
+<script type="text/javascript">
+$("#go").on("click", function(event){
+  event.preventDefault();
+  var surveyURL = './survey.html';
+  window.location = surveyURL;
+  console.log("going to survey");
+});
+
+</script>
+
+</body>
+
+<footer>
+  <div class="row">
+    <div class ="col-lg-12">
+      <div class="panel panel">
+        <div class="panel-heading">
+          <p class ="panel-title current" style="text-align:center">&copy;2017 Gail Izaguirre</p>
+        </div> <!--close panel-heading-->
+      </div> <!--close class panel-primary-->
+    </div>  <!--close col-lg-12-->
+  </div> <!--close row-->
+</footer>
+</html>
