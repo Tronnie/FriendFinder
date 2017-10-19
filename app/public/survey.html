@@ -104,7 +104,7 @@
       <div class='container'>
         <p>
 
-          <a href="/api/friends">API Friend List</a>
+          <a href="../data/friend.js">API Friend List</a>
             |
           <a href="https://github.com/Tronnie/FriendFinder">API Github Repo</a>
         </p>
@@ -131,7 +131,6 @@
     });
   </script>
 
-  <!--video example -->
   <script type = "text/javascript">
     function runFriendArray(){
       var currentURL = window.location.origin;
@@ -149,6 +148,74 @@
     }
 
   </script>
+
+
+  <!--Modal sample pseudocode
+  <div class="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal Text goes here! (name:)(photo:)</p>
+                  -OR-
+                  <h2 id="matchName">****</h2>
+                  <img id="matchImg" src="https://******" />
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- sample pseudocode
+  <script type ="text/javascript">
+  $("#submit").on("click", function(){
+    function validateForm(){
+      var isValid = true;
+      $('.form-control').each(function(){
+        if ( $(this).val()=== '' )
+        isValid = false;
+      });
+
+      $('.chosen-select').each(function(){
+        if( $(this).val()=== '')
+            isValid = false
+      })
+      return isValid;
+    }
+    if (validateForm()==true)
+    {
+      var userData ={
+        name: $("#name").val(),
+        photo: $("#photo").val(),
+        scores: [$("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),]
+      }
+      var currentURL = window.location.origin;
+      $.post(currentURL + "/api/friends", userData, function(data){
+        $("#matchName").text(data.name);
+        $('#matchImg').attr("src", data.photo);
+
+        $("#resultsModal").modal('toggle');
+      });
+    }
+    else
+    {
+      alert("Must fill out all the questions");
+    }
+    return false;
+  });
+  </script>
+  -->
 
 </body>
 
@@ -169,74 +236,3 @@
     </div>  <!--close col-lg-12-->
   </div> <!--close row-->
 </footer>
-
-
-
-<!--Modal sample#1
-<div class="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal Title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal Text goes here! (name:)(photo:)</p>
-                -OR-
-                <h2 id="matchName">****</h2>
-                <img id="matchImg" src="https://******" />
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-
-
-<!--
-<script type ="text/javascript">
-$("#submit").on("click", function(){
-  function validateForm(){
-    var isValid = true;
-    $('.form-control').each(function(){
-      if ( $(this).val()=== '' )
-      isValid = false;
-    });
-
-    $('.chosen-select').each(function(){
-      if( $(this).val()=== '')
-          isValid = false
-    })
-    return isValid;
-  }
-  if (validateForm()==true)
-  {
-    var userData ={
-      name: $("#name").val(),
-      photo: $("#photo").val(),
-      scores: [$("#q1").val(),
-              $("#q2").val(),
-              $("#q3").val(),]
-    }
-    var currentURL = window.location.origin;
-    $.post(currentURL + "/api/friends", userData, function(data){
-      $("#matchName").text(data.name);
-      $('#matchImg').attr("src", data.photo);
-
-      $("#resultsModal").modal('toggle');
-    });
-  }
-  else
-  {
-    alert("Must fill out all the questions");
-  }
-  return false;
-});
-</script>
--->
